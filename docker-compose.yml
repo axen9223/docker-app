@@ -69,3 +69,18 @@ services:
         limits:
           cpus: '0.7'
           memory: 512M
+
+  regexlearn:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: regexlearn 
+    container_name: regexlearn-app
+    ports: 
+      - 6033:3000
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '0.7'
+          memory: 128M
