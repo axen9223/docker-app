@@ -3,9 +3,5 @@ version: '3.0'
 services:
   drawio:
     build: 
-      context: https://github.com/axen9223/docker-app
+      context: https://github.com/axen9223/docker-app.git
       dockerfile: Dockerfile
-      resources:
-        limits:
-          cpus: '0.7'
-          memory: 128M
