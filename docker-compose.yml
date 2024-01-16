@@ -2,84 +2,9 @@ version: '3.0'
 
 services:
   drawio:
-    image: jgraph/drawio
-    container_name: drawio
-    ports:
-      - 6010:8080
-    restart: unless-stopped
-    deploy:
-      resources:
-        limits:
-          cpus: '0.7'
-          memory: 128M
-
-  uptime-kuma:
-    image: louislam/uptime-kuma:1.21.2-alpine
-    container_name: uptime_kuma
-    restart: unless-stopped
-    ports:
-      - 3001:3001
-    volumes: 
-      - /docker-application/uptime-kuma:/app/data
-    deploy:
-      resources:
-        limits:
-          cpus: '0.7'
-          memory: 128M
-          
-  code-server:
-    image: linuxserver/code-server:latest
-    container_name: code-server
-    environment:
-      - PUID=0
-      - PGID=0
-      - TZ=Asia/Kuala_Lumpur
-    ports:
-      - 6020:8443
-    volumes:
-      - /docker-application/code-server:/config
-    restart: unless-stopped
-    deploy:
-      resources:
-        limits:
-          cpus: '0.7'
-          memory: 512M
-
-  nginx-server:
-    image: axen911/alpine-nginx
-    container_name: nginx-server
-    ports: 80:80
-    volumes:
-      - /docker-application/nginx:/etc/nginx/http.d
-    restart: unless-stopped
-    deploy:
-      resources:
-        limits:
-          cpus: '0.7'
-          memory: 512M
-
-  PDF-Editor:
-    image: frooodle/s-pdf
-    container_name: PDF-Editor
-    ports: 
-      - 6030:8080
-    restart: unless-stopped
-    deploy:
-      resources:
-        limits:
-          cpus: '0.7'
-          memory: 512M
-
-  regexlearn:
-    build:
-      context: .
+    build: 
+      context: https://github.com/axen9223/docker-app
       dockerfile: Dockerfile
-    image: regexlearn 
-    container_name: regexlearn-app
-    ports: 
-      - 6033:3000
-    restart: unless-stopped
-    deploy:
       resources:
         limits:
           cpus: '0.7'
